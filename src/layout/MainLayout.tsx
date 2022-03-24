@@ -7,12 +7,13 @@ import { Cart } from "../scenes/Cart";
 const styles = css`
   display: flex;
   gap: 50px;
+  height: 100vh;
 `;
 
 export const MainLayout: FC = () => {
   return (
     <div className={styles}>
-      <div>
+      <div style={{ flex: 1 }}>
         <ImageTypeSelector />
         <Outlet />
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./app.css";
 import { CartContextProvider } from "./core/ImagesContext";
 import { MainLayout } from "./layout/MainLayout";
 import { ImageList } from "./scenes/ImageList";
