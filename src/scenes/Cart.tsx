@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React from "react";
 import { ImagesContext } from "../core/ImagesContext";
@@ -10,7 +10,7 @@ const styles = css`
   border-left: black 2px solid;
 `;
 
-const rootElementStyles = css`
+const headerStyles = css`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -21,6 +21,7 @@ const containerStyles = css`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Cart = () => {
@@ -34,9 +35,13 @@ export const Cart = () => {
     }
   };
 
+  const clearCart = (): void => {
+    setImages([]);
+  };
+
   return (
     <div className={styles}>
-      <div className={rootElementStyles}>
+      <div className={headerStyles}>
         <ShoppingCartIcon style={{ height: "50px", width: "50px" }} />
         <Typography variant={"h6"}>Cart</Typography>
       </div>
@@ -52,6 +57,9 @@ export const Cart = () => {
           />
         ))}
       </div>
+      <Button disabled={!images.length} onClick={clearCart} variant="contained">
+        Clear cart
+      </Button>
     </div>
   );
 };
