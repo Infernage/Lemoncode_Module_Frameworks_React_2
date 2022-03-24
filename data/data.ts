@@ -8,41 +8,45 @@ import puppyB from "./puppy B.png";
 import puppyC from "./puppy C.png";
 import puppyD from "./puppy D.png";
 
+const kitties = [
+  {
+    picUrl: kittenA,
+    title: "kitten A",
+  },
+  {
+    picUrl: kittenB,
+    title: "kitten B",
+  },
+  {
+    picUrl: kittenC,
+    title: "kitten C",
+  },
+  {
+    picUrl: kittenD,
+    title: "kitten D",
+  },
+].map((value, index) => ({ id: index, ...value }));
+
+const puppies = [
+  {
+    picUrl: puppyA,
+    title: "puppy A",
+  },
+  {
+    picUrl: puppyB,
+    title: "puppy B",
+  },
+  {
+    picUrl: puppyC,
+    title: "puppy C",
+  },
+  {
+    picUrl: puppyD,
+    title: "puppy D",
+  },
+].map((value, index) => ({ id: index + kitties.length, ...value }));
+
 export const data = {
-  kitties: [
-    {
-      picUrl: kittenA,
-      title: "kitten A",
-    },
-    {
-      picUrl: kittenB,
-      title: "kitten B",
-    },
-    {
-      picUrl: kittenC,
-      title: "kitten C",
-    },
-    {
-      picUrl: kittenD,
-      title: "kitten D",
-    },
-  ].map((value, index) => ({ id: index, ...value })),
-  puppies: [
-    {
-      picUrl: puppyA,
-      title: "puppy A",
-    },
-    {
-      picUrl: puppyB,
-      title: "puppy B",
-    },
-    {
-      picUrl: puppyC,
-      title: "puppy C",
-    },
-    {
-      picUrl: puppyD,
-      title: "puppy D",
-    },
-  ].map((value, index) => ({ id: index, ...value })),
+  kitties,
+  puppies,
 } as { [type: string]: TPictureInfo[] };

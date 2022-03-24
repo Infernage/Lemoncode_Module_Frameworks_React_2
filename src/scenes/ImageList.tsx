@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { data } from "../../data/data";
 import { ImagesContext } from "../core/ImagesContext";
 import { TPictureInfo } from "../core/PictureModel";
@@ -14,8 +14,17 @@ const styles = css`
 
 export const ImageList = () => {
   const { setImages, images } = React.useContext(ImagesContext);
+  const navigate = useNavigate();
   const kind = useParams().kind as string;
   const filteredData = data[kind ?? "kitties"];
+
+  if (!filteredData) {
+    React.useEffect(() => {
+      console.error(`No species from "${kind}" are available in the shop`);
+      navigate("/");
+    }, []);
+    return <></>;
+  }
 
   const checkImageInCart = (value: TPictureInfo): boolean =>
     images.some((image) => image.id === value.id);

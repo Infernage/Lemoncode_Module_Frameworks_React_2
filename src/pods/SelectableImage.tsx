@@ -14,6 +14,7 @@ const styles = css`
 const imgStyles = css`
   height: 96px;
   width: 96px;
+  margin-bottom: 10px;
 `;
 
 export type TProps = TPictureInfo & {

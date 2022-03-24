@@ -1,15 +1,19 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CartContextProvider } from "./core/ImagesContext";
-import { Cart } from "./scenes/Cart";
+import { MainLayout } from "./layout/MainLayout";
 import { ImageList } from "./scenes/ImageList";
 
 export const App = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <CartContextProvider>
-        <ImageList />
-        <Cart />
-      </CartContextProvider>
-    </div>
+    <CartContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route path=":kind" element={<ImageList />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CartContextProvider>
   );
 };

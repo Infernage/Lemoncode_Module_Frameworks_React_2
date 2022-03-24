@@ -1,7 +1,27 @@
+import { css } from "@emotion/css";
+import { Typography } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import React from "react";
 import { ImagesContext } from "../core/ImagesContext";
 import { CartElement } from "../pods/CartElement";
+
+const styles = css`
+  padding-left: 30px;
+  border-left: black 2px solid;
+`;
+
+const rootElementStyles = css`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+`;
+
+const containerStyles = css`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 export const Cart = () => {
   const { images, setImages } = React.useContext(ImagesContext);
@@ -15,12 +35,12 @@ export const Cart = () => {
   };
 
   return (
-    <div>
-      <div>
-        <ShoppingCartIcon />
-        <span>Cart</span>
+    <div className={styles}>
+      <div className={rootElementStyles}>
+        <ShoppingCartIcon style={{ height: "50px", width: "50px" }} />
+        <Typography variant={"h6"}>Cart</Typography>
       </div>
-      <div className="container">
+      <div className={containerStyles}>
         {images.map((i) => (
           <CartElement
             key={i.id}
